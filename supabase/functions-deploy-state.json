@@ -1,0 +1,9 @@
+{
+  "projectId": "72280527",
+  "functions": {
+    "reset-admin-password": {
+      "hasChanged": false,
+      "hash": "1fb65d8f29f8fde9589ce96975697b380f2ce7a576fee23cdc86e472d1993ad8"
+    }
+  }
+}
