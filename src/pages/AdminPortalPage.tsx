@@ -22,7 +22,25 @@ export function AdminPortalPage() {
     );
   }
 
-  if (!user || !isAdmin) return null;
+  // Vérifie si l'utilisateur est connecté et s'il s'agit bien de l'admin
+  const isAuthorized = user && (isAdmin || user.email === 'admin@douala.cm');
+
+  if (!isAuthorized) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100">
+        <div className="bg-white p-8 rounded-xl shadow-md text-center max-w-md">
+          <h2 className="text-xl font-bold text-gray-800 mb-2">Accès restreint</h2>
+          <p className="text-gray-600 mb-4">Vous devez être connecté en tant qu'administrateur pour accéder à ce portail.</p>
+          <button 
+            onClick={() => navigate('/')} 
+            className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            Retourner à l'accueil
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   const navItems: { key: AdminSection; label: string; icon: typeof Shield; description: string }[] = [
     { key: 'dashboard', label: 'Dashboard', icon: LayoutDashboard, description: 'Statistiques & décisions initiales' },
